@@ -1,0 +1,6 @@
+venv/
+.env
+_secret_auth_.json
+_auth_api_users_.json
+__pycache__/
+misc/
