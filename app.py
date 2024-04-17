@@ -15,7 +15,7 @@ from st_pages import Page, show_pages, add_page_title
 load_dotenv()
 courier_auth_token = os.getenv('COURIER_AUTH_TOKEN')
 
-st.set_page_config(page_title="Cade AI", page_icon="🤖")
+st.set_page_config(page_title="RMG LLM", page_icon="🦊")
 show_pages(
     [
         Page("app.py", "Início", "🎉")
@@ -24,7 +24,7 @@ show_pages(
 
 
 __login__obj = __login__(auth_token = courier_auth_token, 
-                    company_name = "🤖 Cade AI",
+                    company_name = "🤖 RMG LLM",
                     width = 400, height = 400, 
                     logout_button_name = 'Sair ⛔', hide_menu_bool = False, 
                     hide_footer_bool = False, 
@@ -54,9 +54,9 @@ if st.session_state['LOGGED_IN'] == True:
         with c1:
 
             st.divider()
-            st.markdown("<h1 style='text-align: center; color: white; font-size: 1.8em;'>Defesa Econômica com Inteligência Artificial</h1>", unsafe_allow_html=True)
+            st.markdown("<h1 style='text-align: center; color: white; font-size: 1.8em;'>Open Source LLMs</h1>", unsafe_allow_html=True)
             st.markdown("<h1 style='text-align: center; color: white; font-size: 1em;'> <br> </h1>", unsafe_allow_html=True)
-            st.markdown("<h1 style='text-align: center; color: white; font-size: 1em;'> 🤖 D.E.I.A 🤖 </h1>", unsafe_allow_html=True)
+            st.markdown("<h1 style='text-align: center; color: white; font-size: 1em;'> 🤖 Interaja com modelos abertos 🤖 </h1>", unsafe_allow_html=True)
             st.divider()
 
         with c2:
@@ -67,7 +67,7 @@ if st.session_state['LOGGED_IN'] == True:
     
     st.write("""
 
-O CadeAI é uma aplicação de chatbot que utiliza a API do Groq para gerar respostas baseadas em perguntas do usuário. Este projeto foi desenvolvido utilizando a linguagem de programação Python e a biblioteca Streamlit para criar a interface de usuário.
+O RMG LLM é uma aplicação de chatbot que utiliza a API do Groq para gerar respostas baseadas em perguntas do usuário. Este projeto foi desenvolvido utilizando a linguagem de programação Python e a biblioteca Streamlit para criar a interface de usuário.
 
 Esta aplicação consiste em duas partes principais:
 

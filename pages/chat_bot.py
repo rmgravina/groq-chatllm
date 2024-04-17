@@ -17,7 +17,7 @@ client = Groq(
     api_key=os.getenv("GROQ_API_KEY"),
 )
 
-st.set_page_config(page_title="Chatbot", page_icon="🦜", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Assistente Virtual", page_icon="🤖", layout="wide", initial_sidebar_state="expanded")
 
 show_pages(
     [
@@ -57,7 +57,7 @@ with st.sidebar:
 
 if "messages" not in st.session_state:
     
-    st.session_state["messages"] = [{"role": "assistant", "content": "🖐 Olá, {}! \n\nBem vindo ao CadeTalk, como podemos te ajudar?".format(username)}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "🖐 Olá, {}! \n\nBem vindo ao LLMTalk, como podemos te ajudar?".format(username)}]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
@@ -103,7 +103,7 @@ if prompt := st.chat_input():
 if len(st.session_state.messages) > 1:
             
     if st.button("🧹 Limpar"):
-        st.session_state["messages"] = [{"role": "assistant", "content": "🖐 Olá, {}! \n\nBem vindo ao CadeTalk, como podemos te ajudar?".format(username)}]
+        st.session_state["messages"] = [{"role": "assistant", "content": "🖐 Olá, {}! \n\nBem vindo ao LLMTalk, como podemos te ajudar?".format(username)}]
         
         for msg in st.session_state.messages:
             st.chat_message(msg["role"]).write(msg["content"])
