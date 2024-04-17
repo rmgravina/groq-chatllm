@@ -1,6 +1,6 @@
-# 🦜✨ CadeAI - Streamlit App
+# 🦊✨ RMG LLM - Streamlit App
 
-CadeAI é uma aplicação baseada num chatbot que utiliza a API da Maritalk para gerar respostas baseadas nas perguntas do usuário. Este projeto foi desenvolvido utilizando a linguagem de programação Python e a biblioteca Streamlit para criar a interface de usuário.
+RMG LLM é uma aplicação baseada num chatbot que utiliza a API do Groq para realizar inferência em modelos LLM opensource, com objetivo de para gerar respostas baseadas nas perguntas do usuário. Este projeto foi desenvolvido utilizando a linguagem de programação Python e a biblioteca Streamlit para criar a interface de usuário.
 
 A aplicação consiste em duas partes:
 
@@ -43,13 +43,13 @@ Após feito o login, o usuário irá ver uma tela inicial com algumas instruçõ
 
 ## 🔒 Autorização
 
-Para habilitar o uso da API institucional, o usuário deve solicitar à equipe de desenvolvimento que o seu usuário seja autorizado. Após a análise e autorização, o usuário não precisará mais inserir sua chave de API da Maritalk para usar a aplicação, e uma nova mensagem será exibida no menu lateral informado que a API institucional está habilitada.
+Para habilitar o uso da API Master, o usuário deve ser liberado pela equipe de desenvolvimento (utilizando o script `_admin_console.py`). Se autorizado, o usuário não precisará mais inserir sua chave de API do Groq para usar a aplicação, e uma nova mensagem será exibida no menu lateral informado que a API Master está habilitada.
 
 ## 🤝 Contribuição
 
 Contribuições são sempre bem-vindas!
 <br>
-Entre em contato com os [desenvolvedores](mailto:rogerio.gravina@cade.gov.br).
+Entre em contato com os [desenvolvedores](mailto:rmgravina@gmail.com).
 
 ## ✅ Licença
 
