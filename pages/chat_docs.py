@@ -49,7 +49,7 @@ with st.sidebar:
         st.info('💡 Para obter sua API Key, acesse o Groq Cloud.')
 
     st.divider()
-    model_name = st.selectbox("🤖 Modelo", ["mixtral-8x7b-32768", "llama2-70b-4096", "gemma-7b-it"])
+    model_name = st.selectbox("🤖 Modelo", ["mixtral-8x7b-32768","llama3-70b-8192", "llama3-8b-8192", "llama2-70b-4096", "gemma-7b-it"])
     input_max_new_tokens = st.slider("🧮 Número máximo de tokens gerados", min_value=2, max_value=8000, step=2, value=256)
     input_temperature = st.slider("🌡️ Temperatura", min_value=0.0, max_value=1.0, step=0.01, value=0.7)
 

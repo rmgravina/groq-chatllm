@@ -42,7 +42,7 @@ for user in admin_users:
         username = user["username"]
 
 with st.sidebar:
-    model_name = st.selectbox("🤖 Modelo", ["mixtral-8x7b-32768", "llama2-70b-4096", "gemma-7b-it"])
+    model_name = st.selectbox("🤖 Modelo", ["mixtral-8x7b-32768","llama3-70b-8192", "llama3-8b-8192", "llama2-70b-4096", "gemma-7b-it"])
     st.divider()
     st.header("🔑 API Key")
 
