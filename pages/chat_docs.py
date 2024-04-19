@@ -49,7 +49,7 @@ with st.sidebar:
         st.info('💡 Para obter sua API Key, acesse o Groq Cloud.')
 
     st.divider()
-    model_name = st.selectbox("🤖 Modelo", ["mixtral-8x7b-32768", "llama2-70b-4096", "gemma-7b-it"])
+    model_name = st.selectbox("🤖 Modelo", ["mixtral-8x7b-32768", "llama3-70b-8192", "llama3-8b-8192", "llama2-70b-4096", "gemma-7b-it"])
 
     if model_name == "mixtral-8x7b-32768":
         max_tokens = 32768
