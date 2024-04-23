@@ -76,66 +76,98 @@ with st.sidebar:
 #                                     help="O valor escolhido não interfere na qualidade do modelo, apenas parametriza para que as respostas sejam sempre replicáveis para a mesma pergunta."
 #                                     )
 
+col1, col2 = st.columns([1, 2])
 
-uploaded_file = st.file_uploader("Realize o upload", type=("txt", "md"))
-question = st.text_input("Pergunte algo:", placeholder="Você pode resumir o documento?", disabled=not uploaded_file)
+with col1:
 
-if uploaded_file:
-    content = uploaded_file.getvalue().decode("latin-1")
-    prompt = """
-    {}
+    uploaded_file = st.file_uploader("Realize o upload", type=("txt", "md"))
 
-    {}
-    """.format(question, content)
-
-if st.button("⚡ Gerar resposta"):
-    if api_key == "":
-        st.error("❌ API Key não encontrada.")
-        st.stop()
-
-    elif uploaded_file is None:
-        st.warning("Realize o upload de um arquivo.", icon="⚠")
-        st.stop()
-
-    try:
-        client.chat.completions.create(
-            messages=[
-                {
-                    "role": "user",
-                    "content": "ping",
-                    }],
-                    model=model_name,
-                    temperature=1.0,
-                    max_tokens=1,
-        )
-    except:
-        st.error("❌ API Key inválida.")
-        st.stop()
-
-    with st.spinner("⏳ Aguarde..."):
-        try:
-                
-            response = client.chat.completions.create(
-            messages=[
-                {
-                    "role": "user",
-                    "content": prompt,
-                    }],
-                    model=model_name,
-                    temperature=input_temperature,
-                    max_tokens=input_max_new_tokens,
-        ).choices[0].message.content # Adicionar seed quando pertinente
+    if uploaded_file:
             
-            st.success("✅ Pronto!")
-            annotated_text(
-                
-                annotation(response, "🤖", border='1px dashed blue')
-            )
+            content = uploaded_file.getvalue().decode("latin-1")
+            
+            with st.container(height=300):
+                st.markdown(content)
+    
+    button_action = {
+        "resumir_docs": {
+            "name": "⚡ Resumir documento",
+            "action": "Leia o conteúdo do documento abaixo e faça um resumo do mesmo, trazendo uma lista com os seguintes itens: - Tipo do Documento (O que é o documento) - Resumo (resumir); - Principais Pontos (elencar tudo o que for pertinente saber sobre o documento, de forma objetiva). A resposta deve ser sempre no idioma Portugues (pt-br)."
+        },
+        "extrair_ner": {
+            "name": "🔍 Identificar Entidades",
+            "action": "Leia o conteúdo do documento abaixo e extraia as Entidades Nomeadas. A resposta deve ser um JSON sempre no idioma Portugues (pt-br)."
+        },
+        "identificar_infracoes": {
+            "name": "🚨 Identificar infrações",
+            "action": "Leia o conteúdo do documento abaixo e identifique se existem infrações relacionadas aos crimes que o Conselho Administrativo de Defesa Econômica investiga (Ex: Cartel, Formação de preços, Gunjumping, Fraudes em Licitações, e demais crimes do mercado). A resposta deve ser sempre no idioma Portugues (pt-br)."
+        }
+    }
 
-        except:
-            st.error("❌ Erro ao gerar resposta.")
-            st.toast("💥 O número de tokens excedeu o limite, diminua o valor máximo de novos tokens ou o tamanho da pergunta!")
-            st.stop()
+    for button, action_data in button_action.items():
 
-    if st.button("🔁 Realizar outra pergunta"):
-        st.experimental_rerun()
+        if st.button(action_data["name"], use_container_width=True):
+
+            question = action_data["action"]
+
+            prompt = """
+            {}
+
+            {}
+            """.format(question, content)
+
+
+            if api_key == "":
+                st.error("❌ API Key não encontrada.")
+                st.stop()
+
+            elif uploaded_file is None:
+                st.warning("Realize o upload de um arquivo.", icon="⚠")
+                st.stop()
+
+            try:
+                client.chat.completions.create(
+                    messages=[
+                        {
+                            "role": "user",
+                            "content": "ping",
+                            }],
+                            model=model_name,
+                            temperature=1.0,
+                            max_tokens=1,
+                )
+            except:
+                st.error("❌ API Key inválida.")
+                st.stop()
+            
+            with st.spinner("⏳ Aguarde..."):
+                try:
+                        
+                    response = client.chat.completions.create(
+                    messages=[
+                        {
+                            "role": "user",
+                            "content": prompt,
+                            }],
+                            model=model_name,
+                            temperature=input_temperature,
+                            max_tokens=input_max_new_tokens,
+                ).choices[0].message.content # Adicionar seed quando pertinente
+                    
+                    st.toast("✅ Sucesso!")
+
+                    with col2:
+
+                        st.subheader("📝 Resultado")    
+                        with st.container(height=400):
+                            st.markdown(response)
+
+                        @st.experimental_fragment
+                        def download_button():
+                            return st.download_button(label="📥 Baixar resultado", data=response, file_name="resultado.txt", mime="text/plain")
+                        download_button()
+
+                except:
+                    st.error("❌ Erro ao gerar resposta.")
+                    st.toast("💥 O número de tokens excedeu o limite, diminua o valor máximo de novos tokens ou o tamanho da pergunta!")
+                    st.stop()
