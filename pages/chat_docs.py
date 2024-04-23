@@ -50,7 +50,17 @@ with st.sidebar:
 
     st.divider()
     model_name = st.selectbox("🤖 Modelo", ["mixtral-8x7b-32768","llama3-70b-8192", "llama3-8b-8192", "llama2-70b-4096", "gemma-7b-it"])
-    input_max_new_tokens = st.slider("🧮 Número máximo de tokens gerados", min_value=2, max_value=8000, step=2, value=256)
+
+    if model_name == "mixtral-8x7b-32768":
+        max_tokens = 32768
+    
+    elif model_name == "llama2-70b-4096":
+        max_tokens = 4096
+
+    else:
+        max_tokens = 8192
+
+    input_max_new_tokens = st.slider("🧮 Número máximo de tokens gerados", min_value=2, max_value=max_tokens, step=2, value=256)
     input_temperature = st.slider("🌡️ Temperatura", min_value=0.0, max_value=1.0, step=0.01, value=0.7)
 
 # To be implemented: Modelo local (generate_raw())
