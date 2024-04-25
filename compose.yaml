@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  cade_ai: # Nome do contêiner
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - "/DADOS/var/docker_data/cade_ai:/var/docker_data/cade_ai" 
