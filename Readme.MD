@@ -4,7 +4,7 @@ RMG LLM é uma aplicação baseada num chatbot que utiliza a API do Groq para re
 
 A aplicação consiste em duas partes:
 
-1. 🤖 Assistente virtual: Este módulo permite que o usuário interaja com o assistente virtual. Na barra lateral, o usuário pode inserir sua própria chave de API da Maritalk. Posteriormente, o usuário pode fazer perguntas ao assistente virtual. Em caso de autorização do usuário, será habilitado o uso da API institucional.
+1. 🤖 Assistente virtual: Este módulo permite que o usuário interaja com o assistente virtual. Na barra lateral, o usuário pode inserir sua própria chave de API do Groq. Posteriormente, o usuário pode fazer perguntas ao assistente virtual. Em caso de autorização do usuário, será habilitado o uso da API institucional.
 
 2. ✨ Pergunte sobre o documento: Neste módulo, o usuário pode fazer o upload de um documento de texto (.txt, .md) e fazer perguntas com base no texto do documento. O assistente é capaz de ler o documento fornecido e gerar respostas com base no conteúdo do documento.
 
