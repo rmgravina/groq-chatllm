@@ -57,4 +57,4 @@ Entre em contato com os [desenvolvedores](mailto:rmgravina@gmail.com).
 
 ## Sofia
 
-Este arquivo foi editado por Sofia a partir do computador dela.
+Sofia agora sabe onde está trabalhando.
