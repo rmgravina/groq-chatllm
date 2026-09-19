@@ -54,3 +54,7 @@ Entre em contato com os [desenvolvedores](mailto:rmgravina@gmail.com).
 ## ✅ Licença
 
 [MIT](http://opensource.org/licenses/MIT)
+
+## Sofia
+
+Este arquivo foi editado por Sofia a partir do computador dela.
